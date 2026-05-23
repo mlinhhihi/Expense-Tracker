@@ -35,10 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
             } else if (id == R.id.nav_add) {
                 selectedFragment = new AddFragment();
-
-            } else if (id == R.id.nav_report) {
-                selectedFragment = new ReportFragment();
-
             } else if (id == R.id.nav_profile) {
                 selectedFragment = new ProfileFragment();
             }

@@ -16,11 +16,6 @@
         android:icon="@drawable/ic_add"/>
 
     <item
-        android:id="@+id/nav_report"
-        android:title="Báo cáo"
-        android:icon="@drawable/ic_book"/>
-
-    <item
         android:id="@+id/nav_profile"
         android:title="Tôi"
         android:icon="@drawable/ic_me"/>

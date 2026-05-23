@@ -1,14 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFragment">
+    android:background="@color/primary_light"
+    android:padding="20dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TITLE -->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm giao dịch"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#E6E649ED"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-</FrameLayout>
+    <!-- CARD -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- THU CHI -->
+
+            <RadioGroup
+                android:id="@+id/radioType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thu"
+                    android:textColor="@color/text_dark"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/rbExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chi"
+                    android:textColor="@color/text_dark"/>
+            </RadioGroup>
+
+            <!-- SPINNER -->
+
+            <Spinner
+                android:id="@+id/spCategory"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp">
+
+            </Spinner>
+
+            <!-- NHẬP CATEGORY -->
+
+            <EditText
+                android:id="@+id/edtNewCategory"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="16dp"
+                android:hint="Nhập danh mục mới"
+                android:padding="14dp"
+                android:backgroundTint="@color/primary"
+                android:textColorHint="@color/hint_color"
+                android:visibility="gone"/>
+
+            <!-- BUTTON CATEGORY -->
+
+            <Button
+                android:id="@+id/btnAddCategory"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/primary"
+                android:text="Thêm danh mục"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#E6E649ED"
+                android:visibility="gone"/>
+
+            <!-- AMOUNT -->
+
+            <EditText
+                android:id="@+id/edtAmount"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="16dp"
+                android:hint="Nhập số tiền"
+                android:inputType="number"
+                android:padding="14dp"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/hint_color"
+                android:visibility="gone"/>
+
+            <!-- NOTE -->
+
+            <EditText
+                android:id="@+id/edtNote"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="16dp"
+                android:hint="Ghi chú"
+                android:padding="14dp"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/hint_color"
+                android:visibility="gone"/>
+
+            <!-- SAVE -->
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/primary"
+                android:text="Lưu giao dịch"
+                android:textAllCaps="false"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#E6E649ED"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
