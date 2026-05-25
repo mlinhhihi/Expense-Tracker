@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light">
+    android:background="#FAFAFAF5">
 
-    <!-- APP NAME -->
     <TextView
         android:id="@+id/txtAppName"
         android:layout_width="wrap_content"
@@ -15,13 +13,12 @@
         android:text="My Wallet"
         android:textStyle="bold"
         android:textSize="24sp"
-        android:textColor="#E6E649ED"
+        android:textColor="#5C3A21"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- SEARCH -->
     <EditText
         android:id="@+id/edtSearch"
         android:layout_width="0dp"
@@ -29,26 +26,28 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="#FFFFFF"
+        android:background="@android:color/white"
         android:paddingStart="14dp"
         android:paddingEnd="14dp"
-        android:hint="Tìm giao dịch = danh mục..."
+        android:hint="Tìm giao dịch, danh mục..."
+        android:backgroundTint="#FFFFFF"
         android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawableTint="#A0522D"
         android:drawablePadding="10dp"
-        android:textColor="#333333"
-        android:textColorHint="#9CA3AF"
+        android:textColor="#5C3A21"
+        android:textColorHint="#A89F95"
         app:layout_constraintTop_toBottomOf="@id/txtAppName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- MONTH SELECT -->
     <LinearLayout
         android:id="@+id/layoutMonth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="10dp"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="14dp"
         android:background="#FFFFFF"
         android:layout_marginTop="14dp"
         android:layout_marginStart="16dp"
@@ -59,7 +58,9 @@
             android:id="@+id/btnPrevMonth"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:src="@android:drawable/ic_media_previous"/>
+            android:src="@android:drawable/ic_media_previous"
+            android:contentDescription="Tháng trước"
+            app:tint="#8B5A2B"/>
 
         <TextView
             android:id="@+id/txtMonth"
@@ -67,17 +68,18 @@
             android:layout_height="wrap_content"
             android:text="Tháng 05/2026"
             android:textStyle="bold"
-            android:textColor="#6B21A8"
-            android:layout_marginHorizontal="10dp"/>
+            android:textColor="#8B5A2B"
+            android:layout_marginHorizontal="12dp"/>
 
         <ImageView
             android:id="@+id/btnNextMonth"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:src="@android:drawable/ic_media_next"/>
+            android:src="@android:drawable/ic_media_next"
+            android:contentDescription="Tháng sau"
+            app:tint="#8B5A2B"/>
     </LinearLayout>
 
-    <!-- SUMMARY -->
     <LinearLayout
         android:id="@+id/layoutSummary"
         android:layout_width="0dp"
@@ -91,15 +93,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- INCOME -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
             android:layout_marginEnd="6dp"
             app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="#DCFCE7"
-            app:cardElevation="3dp">
+            app:cardBackgroundColor="#E8F5E9"
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,14 +111,14 @@
                 <TextView
                     android:text="Thu"
                     android:textStyle="bold"
-                    android:textColor="#16A34A"
+                    android:textColor="#2E7D32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/txtIncome"
                     android:text="0"
-                    android:textColor="#16A34A"
+                    android:textColor="#2E7D32"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_width="wrap_content"
@@ -125,15 +126,14 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- EXPENSE -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
             android:layout_marginEnd="6dp"
             app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="#FFE4E6"
-            app:cardElevation="3dp">
+            app:cardBackgroundColor="#FFEBEE"
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,14 +144,14 @@
                 <TextView
                     android:text="Chi"
                     android:textStyle="bold"
-                    android:textColor="#E11D48"
+                    android:textColor="#C62828"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/txtExpense"
                     android:text="0"
-                    android:textColor="#E11D48"
+                    android:textColor="#C62828"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_width="wrap_content"
@@ -159,14 +159,13 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- BALANCE -->
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
             app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="#EDE9FE"
-            app:cardElevation="3dp">
+            app:cardBackgroundColor="#F5ECE3"
+            app:cardElevation="2dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -177,14 +176,14 @@
                 <TextView
                     android:text="Số dư"
                     android:textStyle="bold"
-                    android:textColor="#7C3AED"
+                    android:textColor="#8B5A2B"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/txtBalance"
                     android:text="0"
-                    android:textColor="#7C3AED"
+                    android:textColor="#8B5A2B"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_width="wrap_content"
@@ -194,7 +193,6 @@
 
     </LinearLayout>
 
-    <!-- TITLE -->
     <TextView
         android:id="@+id/txtRecent"
         android:layout_width="wrap_content"
@@ -202,19 +200,19 @@
         android:text="Giao dịch gần đây"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:textColor="#374151"
-        android:layout_marginTop="14dp"
+        android:textColor="#5C3A21"
+        android:layout_marginTop="18dp"
         android:layout_marginStart="16dp"
         app:layout_constraintTop_toBottomOf="@id/layoutSummary"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- RECYCLER VIEW (QUAN TRỌNG FIX CHIỀU CAO) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTransaction"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
         app:layout_constraintTop_toBottomOf="@id/txtRecent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

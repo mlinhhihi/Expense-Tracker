@@ -1,9 +1,12 @@
 package thick2.truongthimylinh.mywallet;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,379 +17,311 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import android.text.TextWatcher;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AddFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AddFragment extends Fragment {
 
-    EditText edtAmount;
-    EditText edtNote;
-    EditText edtNewCategory;
-
+    EditText edtAmount, edtNote, edtNewCategory;
     RadioGroup radioType;
-
     Spinner spCategory;
-
-    Button btnSave;
-    Button btnAddCategory;
+    Button btnSave, btnAddCategory;
+    TextView txtTime;
 
     FirebaseFirestore db;
-
     FirebaseUser user;
-
     String uid;
 
     ArrayAdapter<String> adapter;
 
-
-    // TODO: Rename and change types and number of parameters
-    public static AddFragment newInstance(String param1, String param2) {
-        AddFragment fragment = new AddFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
-    }
+    Calendar selectedCalendar = Calendar.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View viewAdd = inflater.inflate(R.layout.fragment_add, container, false);
 
-        // ánh xạ view
-        edtAmount =
-                viewAdd.findViewById(R.id.edtAmount);
+        edtAmount = viewAdd.findViewById(R.id.edtAmount);
+        edtAmount.addTextChangedListener(new TextWatcher() {
 
-        edtNote =
-                viewAdd.findViewById(R.id.edtNote);
+            private boolean isUpdating = false;
 
-        edtNewCategory =
-                viewAdd.findViewById(R.id.edtNewCategory);
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-        radioType =
-                viewAdd.findViewById(R.id.radioType);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-        spCategory =
-                viewAdd.findViewById(R.id.spCategory);
+            @Override
+            public void afterTextChanged(Editable s) {
 
-        btnSave =
-                viewAdd.findViewById(R.id.btnSave);
+                if (isUpdating) return;
 
-        btnAddCategory =
-                viewAdd.findViewById(R.id.btnAddCategory);
+                isUpdating = true;
 
-        // Firebase
+                try {
+                    String clean = s.toString().replace(".", "").replace(",", "");
+
+                    if (clean.isEmpty()) {
+                        edtAmount.setText("");
+                        isUpdating = false;
+                        return;
+                    }
+
+                    long value = Long.parseLong(clean);
+
+                    java.text.DecimalFormat formatter =
+                            new java.text.DecimalFormat("#,###");
+
+                    String formatted = formatter.format(value).replace(",", ".");
+
+                    edtAmount.setText(formatted);
+                    edtAmount.setSelection(formatted.length());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                isUpdating = false;
+            }
+        });
+        edtNote = viewAdd.findViewById(R.id.edtNote);
+        edtNewCategory = viewAdd.findViewById(R.id.edtNewCategory);
+        radioType = viewAdd.findViewById(R.id.radioType);
+        spCategory = viewAdd.findViewById(R.id.spCategory);
+        btnSave = viewAdd.findViewById(R.id.btnSave);
+        btnAddCategory = viewAdd.findViewById(R.id.btnAddCategory);
+        txtTime = viewAdd.findViewById(R.id.txtDate);
+
         db = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        user = FirebaseAuth
-                .getInstance()
-                .getCurrentUser();
-
-        if (user != null) {
-
-            uid = user.getUid();
+        if (user == null) {
+            Toast.makeText(getContext(), "Chưa đăng nhập", Toast.LENGTH_SHORT).show();
+            return viewAdd;
         }
+
+        uid = user.getUid();
+
+        // format time
+        SimpleDateFormat sdf =
+                new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+
+        txtTime.setText(sdf.format(selectedCalendar.getTime()));
+
+        // chọn thời gian
+        txtTime.setOnClickListener(v -> {
+
+            DatePickerDialog datePicker = new DatePickerDialog(
+                    getContext(),
+                    (view, year, month, dayOfMonth) -> {
+
+                        selectedCalendar.set(Calendar.YEAR, year);
+                        selectedCalendar.set(Calendar.MONTH, month);
+                        selectedCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                        TimePickerDialog timePicker = new TimePickerDialog(
+                                getContext(),
+                                (view1, hour, minute) -> {
+
+                                    selectedCalendar.set(Calendar.HOUR_OF_DAY, hour);
+                                    selectedCalendar.set(Calendar.MINUTE, minute);
+
+                                    txtTime.setText(sdf.format(selectedCalendar.getTime()));
+                                },
+                                selectedCalendar.get(Calendar.HOUR_OF_DAY),
+                                selectedCalendar.get(Calendar.MINUTE),
+                                true
+                        );
+
+                        timePicker.show();
+
+                    },
+                    selectedCalendar.get(Calendar.YEAR),
+                    selectedCalendar.get(Calendar.MONTH),
+                    selectedCalendar.get(Calendar.DAY_OF_MONTH)
+            );
+
+            datePicker.show();
+        });
 
         // ẩn ban đầu
         edtAmount.setVisibility(View.GONE);
         edtNote.setVisibility(View.GONE);
         btnSave.setVisibility(View.GONE);
-
         edtNewCategory.setVisibility(View.GONE);
         btnAddCategory.setVisibility(View.GONE);
 
-        // load category mặc định
         loadCategories(true);
 
-        // đổi THU / CHI
-        radioType.setOnCheckedChangeListener(
-                (group, checkedId) -> {
+        radioType.setOnCheckedChangeListener((group, checkedId) -> {
 
-                    if (checkedId == R.id.rbIncome) {
+            loadCategories(checkedId == R.id.rbIncome);
 
-                        loadCategories(true);
+            edtAmount.setVisibility(View.GONE);
+            edtNote.setVisibility(View.GONE);
+            btnSave.setVisibility(View.GONE);
 
-                    } else {
+            edtNewCategory.setVisibility(View.GONE);
+            btnAddCategory.setVisibility(View.GONE);
+        });
 
-                        loadCategories(false);
-                    }
+        spCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String selected = spCategory.getSelectedItem().toString();
+
+                if (selected.equals("+ Thêm danh mục")) {
+
+                    edtNewCategory.setVisibility(View.VISIBLE);
+                    btnAddCategory.setVisibility(View.VISIBLE);
 
                     edtAmount.setVisibility(View.GONE);
                     edtNote.setVisibility(View.GONE);
                     btnSave.setVisibility(View.GONE);
 
+                } else {
+
                     edtNewCategory.setVisibility(View.GONE);
                     btnAddCategory.setVisibility(View.GONE);
-                });
 
-        // chọn category
-        spCategory.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
+                    edtAmount.setVisibility(View.VISIBLE);
+                    edtNote.setVisibility(View.VISIBLE);
+                    btnSave.setVisibility(View.VISIBLE);
+                }
+            }
 
-                    @Override
-                    public void onItemSelected(
-                            AdapterView<?> parent,
-                            View view,
-                            int position,
-                            long id
-                    ) {
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
-                        String selected =
-                                spCategory
-                                        .getSelectedItem()
-                                        .toString();
-
-                        // nếu chọn thêm category
-                        if (selected.equals("+ Thêm danh mục")) {
-
-                            edtNewCategory
-                                    .setVisibility(View.VISIBLE);
-
-                            btnAddCategory
-                                    .setVisibility(View.VISIBLE);
-
-                            edtAmount
-                                    .setVisibility(View.GONE);
-
-                            edtNote
-                                    .setVisibility(View.GONE);
-
-                            btnSave
-                                    .setVisibility(View.GONE);
-
-                        } else {
-
-                            edtNewCategory
-                                    .setVisibility(View.GONE);
-
-                            btnAddCategory
-                                    .setVisibility(View.GONE);
-
-                            edtAmount
-                                    .setVisibility(View.VISIBLE);
-
-                            edtNote
-                                    .setVisibility(View.VISIBLE);
-
-                            btnSave
-                                    .setVisibility(View.VISIBLE);
-                        }
-                    }
-
-                    @Override
-                    public void onNothingSelected(
-                            AdapterView<?> parent
-                    ) {
-
-                    }
-                });
-
-        // thêm category mới
+        // thêm category
         btnAddCategory.setOnClickListener(v -> {
 
-            String newCategory =
-                    edtNewCategory
-                            .getText()
-                            .toString()
-                            .trim();
+            String newCategory = edtNewCategory.getText().toString().trim();
 
             if (newCategory.isEmpty()) {
-
-                edtNewCategory
-                        .setError("Nhập danh mục");
-
+                edtNewCategory.setError("Nhập danh mục");
                 return;
             }
 
-            String type =
-                    (radioType.getCheckedRadioButtonId()
-                            == R.id.rbIncome)
-                            ? "INCOME"
-                            : "EXPENSE";
+            String type = (radioType.getCheckedRadioButtonId() == R.id.rbIncome)
+                    ? "INCOME" : "EXPENSE";
 
-            HashMap<String, Object> categoryData =
-                    new HashMap<>();
-
-            categoryData.put("name", newCategory);
-
-            categoryData.put("type", type);
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("name", newCategory);
+            data.put("type", type);
 
             db.collection("users")
                     .document(uid)
                     .collection("categories")
-                    .add(categoryData)
-                    .addOnSuccessListener(documentReference -> {
+                    .add(data)
+                    .addOnSuccessListener(r -> {
 
-                        Toast.makeText(
-                                getContext(),
-                                "Đã thêm danh mục",
-                                Toast.LENGTH_SHORT
-                        ).show();
+                        Toast.makeText(getContext(), "Đã thêm danh mục", Toast.LENGTH_SHORT).show();
 
                         edtNewCategory.setText("");
-
-                        loadCategories(
-                                type.equals("INCOME")
-                        );
+                        loadCategories(type.equals("INCOME"));
                     });
         });
 
-        // lưu transaction
+        // lưu giao dịch
         btnSave.setOnClickListener(v -> {
 
-            String amount =
-                    edtAmount
-                            .getText()
-                            .toString()
-                            .trim();
-
-            String note =
-                    edtNote
-                            .getText()
-                            .toString()
-                            .trim();
+            String amount = edtAmount.getText().toString().replace(".", "").trim();
+            String note = edtNote.getText().toString().trim();
 
             if (amount.isEmpty()) {
-
                 edtAmount.setError("Nhập số tiền");
-
                 return;
             }
 
-            String type =
-                    (radioType.getCheckedRadioButtonId()
-                            == R.id.rbIncome)
-                            ? "INCOME"
-                            : "EXPENSE";
+            String type = (radioType.getCheckedRadioButtonId() == R.id.rbIncome)
+                    ? "INCOME" : "EXPENSE";
 
-            String category =
-                    spCategory
-                            .getSelectedItem()
-                            .toString();
+            String category = spCategory.getSelectedItem() != null
+                    ? spCategory.getSelectedItem().toString()
+                    : "";
 
-            HashMap<String, Object> data =
-                    new HashMap<>();
-
+            HashMap<String, Object> data = new HashMap<>();
             data.put("amount", amount);
-
             data.put("note", note);
-
             data.put("type", type);
-
             data.put("category", category);
-
             data.put("uid", uid);
-
-            data.put("time", com.google.firebase.Timestamp.now());
+            data.put("time", new Timestamp(selectedCalendar.getTime()));
 
             db.collection("transactions")
                     .add(data)
-                    .addOnSuccessListener(documentReference -> {
+                    .addOnSuccessListener(r -> {
 
-                        Toast.makeText(
-                                getContext(),
-                                "Lưu thành công",
-                                Toast.LENGTH_SHORT
-                        ).show();
+                        Toast.makeText(getContext(), "Lưu thành công", Toast.LENGTH_SHORT).show();
 
                         edtAmount.setText("");
-
                         edtNote.setText("");
 
-                    })
-                    .addOnFailureListener(e -> {
-
-                        Toast.makeText(
-                                getContext(),
-                                "Lỗi: " + e.getMessage(),
-                                Toast.LENGTH_SHORT
-                        ).show();
-
+                        selectedCalendar = Calendar.getInstance();
+                        txtTime.setText(sdf.format(selectedCalendar.getTime()));
                     });
         });
 
         return viewAdd;
     }
 
-    // load category từ Firestore
     private void loadCategories(boolean isIncome) {
 
-        ArrayList<String> tempList =
-                new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
-        // CATEGORY MẶC ĐỊNH
         if (isIncome) {
-
-            tempList.add("Lương");
-            tempList.add("Gia đình cho");
-            tempList.add("Thưởng");
-            tempList.add("Bán đồ");
-
+            list.add("Lương");
+            list.add("Thưởng");
+            list.add("Bán đồ");
         } else {
-
-            tempList.add("Ăn uống");
-            tempList.add("Mua sắm");
-            tempList.add("Đi lại");
-            tempList.add("Học tập");
-            tempList.add("Giải trí");
+            list.add("Ăn uống");
+            list.add("Mua sắm");
+            list.add("Đi lại");
         }
 
-        // load category user thêm
         db.collection("users")
                 .document(uid)
                 .collection("categories")
-                .whereEqualTo(
-                        "type",
-                        isIncome
-                                ? "INCOME"
-                                : "EXPENSE"
-                )
+                .whereEqualTo("type", isIncome ? "INCOME" : "EXPENSE")
                 .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+                .addOnSuccessListener(snap -> {
 
-                    for (QueryDocumentSnapshot doc
-                            : queryDocumentSnapshots) {
+                    for (QueryDocumentSnapshot doc : snap) {
 
-                        String name =
-                                doc.getString("name");
+                        String name = doc.getString("name");
 
-                        // tránh trùng
-                        if (!tempList.contains(name)) {
-
-                            tempList.add(name);
+                        if (name != null && !list.contains(name)) {
+                            list.add(name);
                         }
                     }
 
-                    tempList.add("+ Thêm danh mục");
+                    list.add("+ Thêm danh mục");
 
-                    adapter =
-                            new ArrayAdapter<>(
-                                    getContext(),
-                                    android.R.layout.simple_spinner_dropdown_item,
-                                    tempList
-                            );
+                    adapter = new ArrayAdapter<>(
+                            getContext(),
+                            android.R.layout.simple_spinner_dropdown_item,
+                            list
+                    );
 
                     spCategory.setAdapter(adapter);
                 });

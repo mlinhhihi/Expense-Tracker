@@ -1,152 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
-    android:padding="20dp">
+    android:background="#FAFAFAF5"
+    android:padding="20dp"
+    android:fillViewport="true">
 
-    <!-- TITLE -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thêm giao dịch"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="#E6E649ED"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <!-- CARD -->
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardForm"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/txtTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:text="Thêm giao dịch"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#5C3A21"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-            <!-- THU CHI -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardForm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@id/txtTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <RadioGroup
-                android:id="@+id/radioType"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:padding="20dp">
 
-                <RadioButton
-                    android:id="@+id/rbIncome"
+                <RadioGroup
+                    android:id="@+id/radioType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thu"
-                    android:textColor="@color/text_dark"
-                    android:checked="true"/>
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rbExpense"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Chi"
-                    android:textColor="@color/text_dark"/>
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rbIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thu"
+                        android:textColor="#5C3A21"
+                        android:buttonTint="#8B5A2B"
+                        android:checked="true"/>
 
-            <!-- SPINNER -->
+                    <RadioButton
+                        android:id="@+id/rbExpense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chi"
+                        android:textColor="#5C3A21"
+                        android:buttonTint="#8B5A2B"/>
+                </RadioGroup>
 
-            <Spinner
-                android:id="@+id/spCategory"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="20dp">
+                <Spinner
+                    android:id="@+id/spCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="20dp"/>
 
-            </Spinner>
+                <EditText
+                    android:id="@+id/edtNewCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="16dp"
+                    android:hint="Nhập danh mục mới"
+                    android:padding="14dp"
+                    android:backgroundTint="#A0522D"
+                    android:textColor="#5C3A21"
+                    android:textColorHint="#8A7E72"
+                    android:visibility="gone"/>
 
-            <!-- NHẬP CATEGORY -->
+                <Button
+                    android:id="@+id/btnAddCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="#A0522D"
+                    android:text="Thêm danh mục"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:visibility="gone"/>
 
-            <EditText
-                android:id="@+id/edtNewCategory"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="16dp"
-                android:hint="Nhập danh mục mới"
-                android:padding="14dp"
-                android:backgroundTint="@color/primary"
-                android:textColorHint="@color/hint_color"
-                android:visibility="gone"/>
+                <EditText
+                    android:id="@+id/edtAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="16dp"
+                    android:hint="Nhập số tiền"
+                    android:inputType="number"
+                    android:padding="14dp"
+                    android:backgroundTint="#A0522D"
+                    android:textColor="#5C3A21"
+                    android:textColorHint="#8A7E72"
+                    android:visibility="visible"/>
 
-            <!-- BUTTON CATEGORY -->
+                <EditText
+                    android:id="@+id/edtNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="16dp"
+                    android:hint="Ghi chú"
+                    android:padding="14dp"
+                    android:backgroundTint="#A0522D"
+                    android:textColor="#5C3A21"
+                    android:textColorHint="#8A7E72"
+                    android:visibility="visible"/>
 
-            <Button
-                android:id="@+id/btnAddCategory"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="12dp"
-                android:backgroundTint="@color/primary"
-                android:text="Thêm danh mục"
-                android:textAllCaps="false"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#E6E649ED"
-                android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#EFEBE9"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:text="Chọn thời gian"
+                    android:textColor="#5C3A21"
+                    android:textSize="16sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="visible"/>
 
-            <!-- AMOUNT -->
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="#8B5A2B"
+                    android:text="Lưu giao dịch"
+                    android:textAllCaps="false"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:visibility="visible"/>
 
-            <EditText
-                android:id="@+id/edtAmount"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="16dp"
-                android:hint="Nhập số tiền"
-                android:inputType="number"
-                android:padding="14dp"
-                android:textColor="@color/text_dark"
-                android:textColorHint="@color/hint_color"
-                android:visibility="gone"/>
+            </LinearLayout>
 
-            <!-- NOTE -->
+        </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/edtNote"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="16dp"
-                android:hint="Ghi chú"
-                android:padding="14dp"
-                android:textColor="@color/text_dark"
-                android:textColorHint="@color/hint_color"
-                android:visibility="gone"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- SAVE -->
-
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="24dp"
-                android:backgroundTint="@color/primary"
-                android:text="Lưu giao dịch"
-                android:textAllCaps="false"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:textColor="#E6E649ED"
-                android:visibility="gone"/>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,6 +1,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:color="@color/bottom_selected" android:state_checked="true"/>
-    <item android:color="@color/bottom_unselected"/>
+    <!-- Khi được chọn: Màu nâu đậm sang trọng -->
+    <item android:color="#8B5A2B" android:state_checked="true"/>
+
+    <!-- Khi chưa được chọn: Màu xám ánh nâu nhẹ nhàng -->
+    <item android:color="#A89F95"/>
 
 </selector>

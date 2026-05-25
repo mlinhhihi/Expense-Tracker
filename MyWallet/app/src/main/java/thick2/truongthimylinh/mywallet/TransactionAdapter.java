@@ -9,7 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class TransactionAdapter
         extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
@@ -64,14 +66,70 @@ public class TransactionAdapter
                 model.getCategory()
         );
 
-        holder.txtAmount.setText(
-                model.getAmount() + "đ"
-        );
+        try {
+
+            double amount =
+                    Double.parseDouble(
+                            model.getAmount()
+                    );
+
+            java.text.DecimalFormat format =
+                    new java.text.DecimalFormat("#,###");
+
+            String money =
+                    format.format(amount)
+                            .replace(",", ".");
+
+            if ("INCOME".equals(model.getType())) {
+
+                holder.txtAmount.setText(
+                        "+ " + money + "đ"
+                );
+
+            } else {
+
+                holder.txtAmount.setText(
+                        "- " + money + "đ"
+                );
+            }
+
+        } catch (Exception e) {
+
+            if ("INCOME".equals(model.getType())) {
+
+                holder.txtAmount.setText(
+                        "+ " + model.getAmount() + "đ"
+                );
+
+            } else {
+
+                holder.txtAmount.setText(
+                        "- " + model.getAmount() + "đ"
+                );
+            }
+        }
 
         holder.txtNote.setText(
                 model.getNote()
         );
 
+        // hiển thị thời gian
+        if (model.getTime() != null) {
+
+            SimpleDateFormat sdf =
+                    new SimpleDateFormat(
+                            "dd/MM/yyyy HH:mm",
+                            Locale.getDefault()
+                    );
+
+            holder.txtTime.setText(
+                    sdf.format(
+                            model.getTime().toDate()
+                    )
+            );
+        }
+
+        // màu tiền
         if ("INCOME".equals(model.getType())) {
 
             holder.txtAmount.setTextColor(
@@ -85,6 +143,7 @@ public class TransactionAdapter
             );
         }
 
+        // long click
         holder.cardTransaction
                 .setOnLongClickListener(v -> {
 
@@ -100,12 +159,20 @@ public class TransactionAdapter
         return list.size();
     }
 
+    public void updateList(List<TransactionModel> newList) {
+
+        list = newList;
+
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder
             extends RecyclerView.ViewHolder {
 
         TextView txtCategory,
                 txtAmount,
-                txtNote;
+                txtNote,
+                txtTime;
 
         CardView cardTransaction;
 
@@ -125,6 +192,11 @@ public class TransactionAdapter
             txtNote =
                     itemView.findViewById(
                             R.id.txtNote
+                    );
+
+            txtTime =
+                    itemView.findViewById(
+                            R.id.txtTime
                     );
 
             cardTransaction =
