@@ -176,9 +176,13 @@ public class HomeFragment extends Fragment {
     }
 
     // ================= SEARCH =================
+    // ================= SEARCH =================
     private void filterList(String text) {
 
         List<TransactionModel> filtered = new ArrayList<>();
+
+        // Định dạng ngày tháng để chuyển từ Date sang String khi so sánh
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
 
         for (TransactionModel t : list) {
 
@@ -186,16 +190,22 @@ public class HomeFragment extends Fragment {
             String type = t.getType() == null ? "" : t.getType();
             String note = t.getNote() == null ? "" : t.getNote();
 
+            // Chuyển đổi mốc thời gian của giao dịch sang chuỗi chữ viết
+            String timeStr = "";
+            if (t.getTime() != null) {
+                timeStr = sdf.format(t.getTime().toDate());
+            }
+
             if (cat.toLowerCase().contains(text.toLowerCase())
                     || type.toLowerCase().contains(text.toLowerCase())
-                    || note.toLowerCase().contains(text.toLowerCase())) {
+                    || note.toLowerCase().contains(text.toLowerCase())
+                    || timeStr.contains(text)) {
                 filtered.add(t);
             }
         }
 
         adapter.updateList(filtered);
     }
-
     // ================= OPTION =================
     private void showOptionDialog(TransactionModel t) {
 

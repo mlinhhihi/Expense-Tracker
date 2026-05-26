@@ -37,4 +37,5 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation(libs.constraintlayout)
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
 }
