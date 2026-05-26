@@ -84,6 +84,7 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
   <img width="220" alt="Màn hình Đăng nhập" src="https://github.com/user-attachments/assets/7bf514a5-c7ea-4c6a-bbfd-6a4db2514241" style="margin-right: 20px;" />
   <img width="220" alt="Màn hình Hồ sơ" src="https://github.com/user-attachments/assets/38a425f4-adad-48c0-83e6-a8f56e8bcc28" />
 </p>
+
 * **Đồ thị Sliding Tab phẳng:** Sử dụng cấu trúc `RadioGroup` bo góc thẩm mỹ, hỗ trợ chuyển đổi mượt mà giữa hai góc nhìn phân tích chuyên sâu:
   * **Tổng quan Thu - Chi:** Biểu diễn tỷ trọng tương quan giữa Tổng thu nhập (`INCOME`) và Tổng chi tiêu (`EXPENSE`) bằng sắc màu trực quan (Xanh lá - Đỏ).
   * **Phân tích Khoản Chi:** Bóc tách chuyên sâu tổng lượng tiền chi ra thành các lát bánh thành phần tương ứng với từng danh mục cụ thể (Ăn uống, Trọ, Mua sắm, Đi lại...).
