@@ -10,10 +10,6 @@ Báo cáo tiến độ và cấu trúc chức năng ứng dụng **MyWallet** th
   - [1. Chức năng Đăng nhập & Tài khoản](#1-chức-năng-đăng-nhập--tài-khoản)
   - [2. Chức năng Thêm Giao dịch](#2-chức-năng-thêm-giao-dịch)
   - [3. Chức năng Trang chủ & Quản lý danh sách](#3-chức-năng-trang-chủ--quản-lý-danh-sách)
-- [📝 Danh sách Bài tập & Thực hành Học phần](#-danh-sách-bài-tập--thực hành-học-phần)
-  - [Bài tập Quản lý chi tiêu theo tuần](#bài-tập-quản-lý-chi-tiêu-theo-tuần)
-  - [Nội dung THIGK2 (Câu 1, 2, 3)](#nội-dung-thigk2)
-  - [Các bài thực hành thành phần (Bài 8 - Bài 13)](#các-bài-thực-hành-thành-phần)
 
 ---
 
@@ -66,22 +62,3 @@ Báo cáo tiến độ và cấu trúc chức năng ứng dụng **MyWallet** th
 
 ---
 
-## 📝 Danh sách Bài tập & Thực hành Học phần
-
-Dưới đây là các phần nội dung bài tập nền tảng được tích hợp và hoàn thiện trong quá trình xây dựng ứng dụng qua từng tuần học:
-
-### Bài tập Quản lý chi tiêu theo tuần
-* Triển khai nền tảng logic quản lý dòng tiền theo tiến độ tuần học.
-
-### Nội dung THIGK2
-* **Câu 1:** Thiết kế và tối ưu giao diện cơ bản.
-* **Câu 2:** Xử lý logic nghiệp vụ và ràng buộc dữ liệu đầu vào.
-* **Câu 3:** Kết nối cơ sở dữ liệu/Xử lý lưu trữ luồng dữ liệu chính.
-
-### Các bài thực hành thành phần
-* **Bài 8:** Tùy chỉnh ListView (`Custom ListView` áp dụng cho danh bạ/món ăn).
-* **Bài 9:** Sử dụng `RecyclerView` tối ưu hiển thị danh sách đối tượng lớn.
-* **Sử dụng Drawable Resource:** Thiết kế UI components, custom góc bo, gradient màu sắc cho button và background.
-* **Bài 10:** Tương tác chuyển đổi giữa các Activity thông qua `Intent` đơn giản.
-* **Bài 11 & 12:** Xây dựng bố cục linh hoạt với `Fragment tĩnh` và `Fragment động`.
-* **Bài 13 & Bottom Navigation:** Xử lý chuyển đổi qua lại giữa các Fragment chính (Home, Add, Profile) mượt mà bằng thanh điều hướng phía dưới màn hình.
