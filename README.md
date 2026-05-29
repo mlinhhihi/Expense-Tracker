@@ -7,7 +7,7 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 ## 📚 Mục lục
 - [🚀 Giới thiệu & Công nghệ sử dụng](#-giới-thiệu--công-nghệ-sử-dụng)
 - [✨ Các Chức năng Chính của Ứng dụng](#-các-chức-năng-chính-của-ứng-dụng)
-  - [1. Chức năng Đăng ký Tài khoản](#1-chức-năng-đăng ký-tài-khoản)
+  - [1. Chức năng Đăng ký Tài khoản](#1-chức-năng-đăng-ký-tài-khoản)
   - [2. Phân hệ Xác thực Tài khoản & Đồng bộ Hồ sơ Cá nhân](#2-phân-hệ-xác-thực-tài-khoản--đồng-bộ-hồ-sơ-cá-nhân)
   - [3. Chức năng Thêm Giao dịch & Quản lý Danh mục Linh hoạt](#3-chức-năng-thêm-giao-dịch--quản-lý-danh-mục-linh-hoạt)
   - [4. Chức năng Trang chủ & Quản lý Danh sách Giao dịch (CRUD Toàn diện)](#4-chức-năng-trang-chủ--quản-lý-danh-sách-giao-dịch-crud-toàn-diện)
