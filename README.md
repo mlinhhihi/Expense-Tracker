@@ -65,8 +65,9 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 > 🔗 [Xem mã nguồn `AddFragment.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/AddFragment.java)
 
 <p align="center">
-  <img width="220" alt="Màn hình Thêm Giao dịch" src="https://github.com/user-attachments/assets/caf22be5-a092-4e61-a7d5-2b95da82952f" />
+  <img width="220" alt="Màn hình Thêm Giao dịch" src="https://github.com/user-attachments/assets/843fb4f1-9ea9-4e57-875e-c0def8a0edb9" />
 </p>
+
 
 * **Tự động định dạng tiền tệ thời gian thực (Real-time Currency Masking):** Tích hợp bộ lắng nghe `TextWatcher` kết hợp giải thuật định dạng `DecimalFormat("#,###")`. Khi người dùng nhập số tiền, hệ thống tự động bóc tách và chèn các dấu chấm phân cách hàng nghìn (`100.000`, `2.500.000`...) theo thời gian thực mà không làm nghẽn luồng xử lý chính, mang lại trải nghiệm UI/UX mượt mà.
 * **Cơ chế ẩn/hiện giao diện thông minh (Conditional UI Toggle):** Tránh hiện tượng phân tán sự chú ý bằng cách ẩn toàn bộ các trường nhập liệu ban đầu. Chỉ khi người dùng chọn một danh mục cụ thể hoặc kích hoạt tính năng tạo danh mục mới, các ô nhập liệu liên quan (`Amount`, `Note`, `SaveButton`) mới thay đổi trạng thái hiển thị (`View.VISIBLE`), giúp giao diện luôn sạch sẽ, tinh gọn.
