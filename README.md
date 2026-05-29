@@ -35,8 +35,9 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 > 🔗 [Xem mã nguồn `RegisterActivity.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/RegisterActivity.java)
 
 <p align="center">
-  <img width="220" alt="Màn hình Thêm Giao dịch" src=https://github.com/user-attachments/assets/0c7f8b32-6da6-4ea6-9a18-28685d0faf58"/>
+  <img width="220" alt="Màn hình đăng ký tài khoản" src=https://github.com/user-attachments/assets/54831966-e4e8-41ac-a430-d943cebfa3ff"/>
 </p>
+
 
 **Khởi tạo:** Cho phép người dùng mới nhanh chóng thiết lập tài khoản truy cập ứng dụng bằng cách cung cấp thông tin bảo mật gồm Email và Mật khẩu.
 * **Cơ chế kiểm soát dữ liệu đầu vào (Validation):** Hệ thống tự động kiểm tra nghiêm ngặt, chặn các hành vi bỏ trống trường nhập liệu, đồng thời bắt buộc độ dài mật khẩu phải đạt từ 6 ký tự trở lên để đảm bảo quy chuẩn an toàn trước khi gửi yêu cầu lên máy chủ.
