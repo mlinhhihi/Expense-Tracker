@@ -13,7 +13,6 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
   - [4. Chức năng Trang chủ & Quản lý danh sách](#4-chức-năng-trang-chủ--quản-lý-danh-sách)
   - [5. Chức năng Biểu đồ & Phân tích (Thống kê)](#5-chức-năng-biểu-đồ--phân-tích-thống-kê)
 - [🛠 Cấu trúc Database (Firebase Cloud Firestore)](#-cấu-trúc-database-firebase-cloud-firestore)
-- [📐 Thiết kế Giao diện & Trải nghiệm Người dùng (UI/UX)](#-thiết-kế-giao-diện--trải-nghiệm-người-dùng-uiux)
 
 ---
 
