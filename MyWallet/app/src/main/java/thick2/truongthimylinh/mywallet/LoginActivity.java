@@ -43,12 +43,12 @@ public class LoginActivity extends AppCompatActivity {
             String password = edtPassword.getText().toString().trim();
 
             if(TextUtils.isEmpty(email)){
-                edtEmail.setError("Enter email");
+                edtEmail.setError("Vui lòng nhập email!");
                 return;
             }
 
             if(TextUtils.isEmpty(password)){
-                edtPassword.setError("Enter password");
+                edtPassword.setError("Vui lòng nhập mật khấu!");
                 return;
             }
 
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
             String email = edtEmail.getText().toString().trim();
 
             if(email.isEmpty()){
-                edtEmail.setError("Enter email");
+                edtEmail.setError("NHẬP EMAIL");
                 return;
             }
 

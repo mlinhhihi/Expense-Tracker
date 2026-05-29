@@ -41,10 +41,30 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
+                <Button
+                    android:id="@+id/btnScanInvoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:backgroundTint="#8B5A2B"
+                    android:text="📸 Quét hóa đơn"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarScan"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:indeterminate="true"
+                    android:visibility="gone" />
                 <RadioGroup
                     android:id="@+id/radioType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -107,7 +127,7 @@
                     android:backgroundTint="#A0522D"
                     android:textColor="#5C3A21"
                     android:textColorHint="#8A7E72"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
                 <EditText
                     android:id="@+id/edtNote"
@@ -119,7 +139,7 @@
                     android:backgroundTint="#A0522D"
                     android:textColor="#5C3A21"
                     android:textColorHint="#8A7E72"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/txtDate"
@@ -147,12 +167,11 @@
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:textColor="#FFFFFF"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.core.widget.NestedScrollView>

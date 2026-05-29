@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             Toast.makeText(
                                     RegisterActivity.this,
-                                    "Register Success",
+                                    "Đăng ký tài khoản thành công",
                                     Toast.LENGTH_SHORT
                             ).show();
 

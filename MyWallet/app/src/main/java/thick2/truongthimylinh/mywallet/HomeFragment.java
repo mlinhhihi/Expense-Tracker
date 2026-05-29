@@ -176,7 +176,6 @@ public class HomeFragment extends Fragment {
     }
 
     // ================= SEARCH =================
-    // ================= SEARCH =================
     private void filterList(String text) {
 
         List<TransactionModel> filtered = new ArrayList<>();
@@ -418,7 +417,7 @@ public class HomeFragment extends Fragment {
                     .document(transaction.getId())
                     .update(update)
                     .addOnSuccessListener(u -> {
-                        Toast.makeText(getContext(), "Cập nhật OK", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                         loadTransactions();
                         dialog.dismiss();
                     });
