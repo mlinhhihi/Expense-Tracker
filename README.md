@@ -35,7 +35,7 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 > 🔗 [Xem mã nguồn `RegisterActivity.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/RegisterActivity.java)
 
 <p align="center">
-  <img width="220" alt="Màn hình đăng ký tài khoản" src=https://github.com/user-attachments/assets/54831966-e4e8-41ac-a430-d943cebfa3ff"/>
+  <img width="220" alt="Màn hình đăng ký tài khoản" src="https://github.com/user-attachments/assets/54831966-e4e8-41ac-a430-d943cebfa3ff"/>
 </p>
 
 
