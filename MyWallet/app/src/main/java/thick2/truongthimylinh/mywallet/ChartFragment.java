@@ -292,8 +292,8 @@ public class ChartFragment extends Fragment {
         dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         dataSet.setValueLinePart1OffsetPercentage(80f);
-        dataSet.setValueLinePart1Length(0.6f);
-        dataSet.setValueLinePart2Length(0.5f);
+        dataSet.setValueLinePart1Length(0.5f);
+        dataSet.setValueLinePart2Length(0.3f);
         dataSet.setValueLineColor(Color.DKGRAY);
 
         PieData data = new PieData(dataSet);
