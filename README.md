@@ -34,7 +34,7 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 > 🔗 [Xem mã nguồn `RegisterActivity.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/RegisterActivity.java)
 
 <p align="center">
-  <img width="220" alt="Màn hình đăng ký tài khoản" src="https://github.com/user-attachments/assets/54831966-e4e8-41ac-a430-d943cebfa3ff"/>
+  <img width="220" alt="Màn hình đăng ký tài khoản" src="https://github.com/user-attachments/assets/6afd5ec8-11e6-4081-bd9c-38b815b2d3fc"/>
 </p>
 
 * **Khởi tạo định danh tối giản:** Cho phép người dùng mới nhanh chóng thiết lập tài khoản truy cập ứng dụng bằng cách cung cấp thông tin bảo mật gồm Email và Mật khẩu.
@@ -47,8 +47,8 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 > 🔗 [Xem mã nguồn `LoginActivity.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/LoginActivity.java) | [Xem mã nguồn `ProfileFragment.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/ProfileFragment.java)
 
 <p align="center">
-  <img width="220" alt="Màn hình Đăng nhập" src="https://github.com/user-attachments/assets/ce707991-2c95-46ac-9785-3dfc410f498e" style="margin-right: 20px;" />
-  <img width="220" alt="Màn hình Hồ sơ" src="https://github.com/user-attachments/assets/c1d5097c-d167-4658-a280-84c92542fef5" />
+  <img width="220" alt="Màn hình Đăng nhập" src="https://github.com/user-attachments/assets/abf877e5-96e9-4cfb-bac1-caf58998af46" style="margin-right: 20px;" />
+  <img width="220" alt="Màn hình Hồ sơ" src="https://github.com/user-attachments/assets/ee168bdd-4863-4193-8e22-3a95e00a02d4" />
 </p>
 
 * **Xác thực phiên làm việc (Authentication):** Người dùng nhập Email và Mật khẩu tại `LoginActivity`. Hệ thống gọi API `signInWithEmailAndPassword` để xác thực bất đồng bộ với hệ thống đám mây Firebase. Khi thành công, một mã định danh duy nhất (`uid`) sẽ được cấp phát để ghim giữ phiên làm việc.
@@ -64,8 +64,10 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 ### 3. Chức năng Thêm Giao dịch & Quản lý Danh mục Linh hoạt
 > 🔗 [Xem mã nguồn `AddFragment.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/AddFragment.java)
 
+
 <p align="center">
-  <img width="220" alt="Màn hình Thêm Giao dịch" src="https://github.com/user-attachments/assets/843fb4f1-9ea9-4e57-875e-c0def8a0edb9" />
+  <img width="220" alt="Màn hình thêm giao dịch" src="https://github.com/user-attachments/assets/002f3323-def4-4a42-a178-a0214d7bbd55" style="margin-right: 20px;" />
+  <img width="220" alt="chức năng thêm danh mục" src="https://github.com/user-attachments/assets/8cff79dd-a8c1-40a4-b001-ba472dfc5e79" />
 </p>
 
 
@@ -82,7 +84,7 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 > 🔗 [Xem mã nguồn `HomeFragment.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/HomeFragment.java)
 
 <p align="center">
-  <img width="220" alt="Màn hình Trang chủ" src="https://github.com/user-attachments/assets/3102cca5-7200-41ab-9cef-382664cdcb35" />
+  <img width="220" alt="Màn hình Trang chủ" src="https://github.com/user-attachments/assets/bd2584af-6f64-46db-ac72-1fbba70ff252" />
 </p>
 
 * **Tính toán cán cân tài chính tự động (Real-time Balance Calculator):** Hệ thống quét toàn bộ danh sách giao dịch trả về từ Cloud Firestore để phân tách dòng tiền. Sử dụng thuật toán tính toán lũy kế bất đồng bộ để xuất ra ba chỉ số tài chính: **Tổng thu nhập (`INCOME`)**, **Tổng chi tiêu (`EXPENSE`)**, và **Số dư khả dụng (`Balance`)**. Dữ liệu được định dạng bằng `DecimalFormat("#,###")` và tự động cập nhật ngay khi có biến động dữ liệu.
@@ -98,8 +100,8 @@ Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn 
 > 🔗 [Xem mã nguồn `ChartFragment.java`](https://github.com/mlinhhihi/Expense-Tracker/blob/main/MyWallet/app/src/main/java/thick2/truongthimylinh/mywallet/ChartFragment.java)
 
 <p align="center">
-  <img width="220" alt="Màn hình Đăng nhập" src="https://github.com/user-attachments/assets/7bf514a5-c7ea-4c6a-bbfd-6a4db2514241" style="margin-right: 20px;" />
-  <img width="220" alt="Màn hình Hồ sơ" src="https://github.com/user-attachments/assets/38a425f4-adad-48c0-83e6-a8f56e8bcc28" />
+  <img width="220" alt="Biểu đồ thu chi" src="https://github.com/user-attachments/assets/7f3c7aad-a168-4de5-ba11-d5e9642d9ea0" style="margin-right: 20px;" />
+  <img width="220" alt="Màn hình Hồ sơ" src="https://github.com/user-attachments/assets/7b098d7e-519c-4e88-a1c7-b2bd63911307" />
 </p>
 
 * **Phòng ngừa xung đột bất đồng bộ (Lifecycle-Safe State Flag):** Tích hợp biến cờ hiệu `isDataLoaded` để kiểm soát trạng thái dữ liệu. Cơ chế này chặn hoàn toàn các tiến trình tính toán của bộ lắng nghe `OnItemSelectedListener` trên các Spinner khi View đang khởi tạo, đảm bảo ứng dụng không bao giờ bị xung đột bộ nhớ hoặc sập runtime (Crash) khi mạng chậm.
