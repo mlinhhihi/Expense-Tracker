@@ -1,6 +1,6 @@
 # 📱 MyWallet - Ứng dụng Quản lý Chi tiêu Cá nhân
 
-Báo cáo tiến độ, cấu trúc chức năng và tài liệu hướng dẫn kỹ thuật của ứng dụng **MyWallet** thuộc học phần **Lập trình thiết bị di động (65.CNTT-2)**.
+Báo cáo tiến độ, cấu trúc chức năng của ứng dụng **MyWallet** thuộc học phần **Lập trình thiết bị di động (65.CNTT-2)**.
 
 ---
 
